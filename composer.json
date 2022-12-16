@@ -2,13 +2,47 @@
     "name": "risecommerce/magento-2-smtp-extension",
     "description": "Risecommerce SMTP Extension for Magento 2",
     "type": "magento2-module",
-    "version": "1.3.0",
+    "version": "1.1.1",
+    "license": [
+    "OSL-3.0",
+    "AFL-3.0"
+  ],
+    "authors": [
+    {
+      "name": "Risecommerce",
+      "email": "support@risecommerce.com",
+      "homepage": "https://www.risecommerce.com",
+      "role": "Technical Support"
+    }
+  ],
+    "minimum-stability": "dev", 
+   "keywords": [
+    "magento 2",
+    "magento 2 smtp",
+    "magento smtp",
+    "risecommerce",
+    "smtp",
+    "email settings",
+    "gmail smtp",
+    "marketing automation",
+    "email marketing",
+    "sms marketing",
+    "sms",
+    "email",
+    "messenger",
+    "facebook",
+    "google ads",
+    "facebook ads",
+    "whatsapp",
+    "web push notification"
+  ],
     "require": {
-        "php": "~7.1.0|~7.2.0|~7.3.0|~7.4.0|^8.0"
+        "php": "~7.0.13|~7.1.0|~7.2.0|~7.3.0|~7.4.0|^8.1"
+
     },
     "autoload": {
         "files": [
-        	"registration.php"
+            "registration.php"
         ],
         "psr-4": {
             "Risecommerce\\Smtp\\": ""
