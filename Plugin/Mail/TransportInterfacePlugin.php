@@ -16,7 +16,7 @@ use Magento\Framework\Exception\MailException;
 use Magento\Framework\Mail\TransportInterface;
 use Risecommerce\Smtp\Helper\Data;
 use Magento\Framework\Phrase;
-
+use Laminas\Mail;
 
 class TransportInterfacePlugin
 {
@@ -66,7 +66,7 @@ class TransportInterfacePlugin
             ];
 
             if (version_compare($this->smtpHelper->getMagentoVersion(), '2.2.7', '>')) {
-                $zendMessage = \Zend\Mail\Message::fromString($message->getRawMessage())->setEncoding('utf-8');
+                $zendMessage = Mail\Message::fromString($message->getRawMessage())->setEncoding('utf-8');
                 if (2 === $isSetReturnPath && $returnPathValue) {
                     $zendMessage->setSender($returnPathValue);
                 } elseif (1 === $isSetReturnPath && $zendMessage->getFrom()->count()) {
@@ -75,7 +75,7 @@ class TransportInterfacePlugin
                     $zendMessage->setSender($fromAddressList->current()->getEmail());
                 }
 
-                $smtpConf = new \Zend\Mail\Transport\SmtpOptions($smtpConf);
+                $smtpConf = new Mail\Transport\SmtpOptions($smtpConf);
                 $message = $zendMessage;
                 if (strtolower($this->smtpHelper->getSmtpAuthConfig()) != 'none') {
                     $smtpConf->setConnectionClass(strtolower($this->smtpHelper->getSmtpAuthConfig()));
@@ -92,7 +92,7 @@ class TransportInterfacePlugin
                 if (!empty($connectionConfig)) {
                     $smtpConf->setConnectionConfig($connectionConfig);
                 }
-                $transport = new \Zend\Mail\Transport\Smtp();
+                $transport = new Mail\Transport\Smtp();
                 $transport->setOptions($smtpConf);
 				
             } else {
